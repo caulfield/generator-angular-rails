@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      dist: './../public'
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -82,8 +82,34 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+          context: '/api',
+          host: '127.0.0.1',
+          port: 3000,
+          https: false,
+          changeOrigin: false,
+          xforward: false
+        }
+      ],
       livereload: {
         options: {
+          middleware: function(connect, options) {
+            if (!Array.isArray(options.base)) {
+              options.base = [options.base]
+            }
+
+            var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest]
+
+            options.base.forEach(function(base) {
+              middlewares.push(connect.static(base))
+            })
+
+            var directory = options.directory || options.base[options.base.length - 1];
+            middlewares.push(connect.directory(directory));
+
+            return middlewares
+          },
           open: true,
           base: [
             '.tmp',
@@ -430,6 +456,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bowerInstall',
       'concurrent:server',
+      'configureProxies:server',
       'autoprefixer',
       'connect:livereload',
       'watch'

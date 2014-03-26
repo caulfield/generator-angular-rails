@@ -1,7 +1,7 @@
 {
-  "name": "generator-angular",
+  "name": "generator-angular-rails-proxy",
   "version": "0.7.1",
-  "description": "Yeoman generator for AngularJS",
+  "description": "Yeoman generator for AngularJS with proxy for rails dev mode",
   "keywords": [
     "yeoman-generator",
     "scaffold",
@@ -13,7 +13,7 @@
   ],
   "author": "The Yeoman Team",
   "main": "app/index.js",
-  "repository": "yeoman/generator-angular",
+  "repository": "yeoman/generator-angular-rails-proxy",
   "scripts": {
     "test": "mocha"
   },

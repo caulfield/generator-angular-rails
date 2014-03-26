@@ -1,3 +1,12 @@
+# AngularJs generator for rails
+
+> Yoeman generator for AngularJS with proxy for default rails port(3000). Dist path changed to default rails /public folder. Useful for fast development.
+
+Run `yo angular-rails-proxy` command
+
+
+READ ANGULAR GENERATOR DOCS BELOW
+
 # AngularJS generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.png?branch=master)](http://travis-ci.org/yeoman/generator-angular) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Yeoman generator for AngularJS - lets you quickly set up a project with sensible defaults and best practises.
